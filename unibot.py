@@ -29,9 +29,9 @@ from typing import List, Any, Optional, Callable, Union, Tuple, Dict
 from contract_utils import *
 
 from token_addresses import *
-from appconf import *
 from consts import *
 import ethplorer
+import os
 
 from coingecko import CoinGeckoAPI
 cg = CoinGeckoAPI()    
@@ -42,6 +42,7 @@ AddressLike = Union[Address, ChecksumAddress, ENS]
 
 _netid_to_name = {1: "mainnet", 4: "rinkeby"}
 
+wdir = os.getcwd()
 log_dir = wdir + "/logs"
 
 logging.basicConfig(

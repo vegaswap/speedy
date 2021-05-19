@@ -30,9 +30,6 @@ def address_tx(address):
     return r
     #getAddressTransactions
     
-a = "0xe17f017475a709de58e976081eb916081ff4c9d5"
-r = address_tx(a)
-print (len(r))
 
 #tokenaddress = "0x33ea42ecab4681b4a983b9d39c4a7e16dc107df8"
 #x = "0x6a3D23fA07c455F88D70c29D230467C407a3964b"
