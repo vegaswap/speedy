@@ -1,0 +1,66 @@
+sudo nano /etc/ufw/before.rules
+*nat
+:PREROUTING ACCEPT [0:0]
+-A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080
+COMMIT
+sudo ufw disable
+sudo ufw enable
+
+
+sudo pip3 install supervisor
+
+
+
+#########
+
+sudo apt-get install python-setuptools
+
+sudo easy_install supervisor
+
+sudo apt-get upgrade
+
+
+sudo cp web.service /lib/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl enable web.service
+sudo systemctl start web.service
+sudo systemctl status web.service
+sudo systemctl restart web.service
+
+#####
+
+sudo apt-get update -y && sudo apt install python3-pip -y
+sudo apt-get install supervisor
+supervisord -c supervisord.conf
+
+sudo pkill supervisorctl
+sudo unlink /var/run/supervisor.sock
+ps -ef | grep supervisord
+
+supervisorctl
+sudo supervisorctl -c /etc/supervisor/supervisord.conf reread
+
+sudo supervisorctl -c supervisord.conf reread
+sudo /usr/sbin/supervisorctl -c supervisord.conf reread
+
+sudo service supervisor stop
+sudo service supervisor start 
+sudo service supervisor restart
+sudo service supervisor status
+
+ sudo nano /etc/supervisor/supervisord.conf
+
+ sudo cp supervisord.conf /etc/supervisor/supervisord.conf 
+
+ pip3 install supervisor
+
+ sudo ln -s  /etc/supervisor/supervisord.conf /etc/supervisord.conf
+
+
+sudo apt-get remove supervisor
+sudo apt-get remove --auto-remove supervisor
+sudo apt-get purge --auto-remove supervisor
+
+sudo cp supervisord.conf /etc/supervisord.conf
+
+python3 -c "import supervisor; print('success')"

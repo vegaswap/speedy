@@ -1,0 +1,104 @@
+{% extends "frame.html" %}
+
+{% block innercontent %}
+
+          <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+              <h1>Trading</h1>              
+            </div>
+
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+              <h1 class="h2">Links</h1>              
+            </div>
+            DEXtools <a href="https://www.dextools.io/app/uniswap/pair-explorer/{{target_pair}}">                      
+              <img width=40 height=40 src="{{url_for('static', filename='DexTools.jpg')}}" />
+            </a>
+          <br>
+            Uniswap info <a href="https://uniswap.info/pair/{{target_pair}}">                      
+              <img width=40 height=40 src="{{url_for('static', filename='uniswap.png')}}" />
+          </a>
+
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+              <h1 class="h2">Config</h1>              
+            </div>
+                       
+            <div class="table-responsive">
+
+              <p>Target_token {{pool_info.token_symbol}} 
+                <br>
+                Address: {{pool_info.target_token}}
+                <br>
+                live_run: {{live_run}}
+                <br>
+                max_slippage: {{max_slippage}}
+              </p>
+
+              Target token
+              <form action="{{ url_for('handle_data') }}" method="post">
+                <input type="text" name="TARGET_TOKEN">
+                <input type="submit">
+            </form>
+
+            <hr>
+            <h2>Pool info</h2>          
+            <p>Price {{pool_info.price}}<br>
+              Reserves ETH {{pool_info.reserves_eth}}<br>
+             Reserves token {{pool_info.reserves_token}}<br>
+             Max tokens can buy {{pool_info.max_buy}}<br>
+             Percent of pool can buy {{pool_info.max_buy_pool}} %<br>
+            </p>
+
+            
+            <hr>
+            <h2>Buy</h2>
+
+            <form action="{{ url_for('handle_buy') }}" method="post">
+              <div class="form-group col-2">
+                <label>QTY</label>
+                <input type="QTY" class="form-control" id="QTY" name="QTY" placeholder="QTY">
+              </div>
+              <input type="submit">
+            </form>
+
+            <hr>            
+
+            <h2>Sell</h2>
+
+            <form action="{{ url_for('handle_buy') }}" method="post">
+              <div class="form-group col-2">
+                <label>QTY</label>
+                <input type="QTY" class="form-control" id="QTY" name="QTY" placeholder="QTY">
+              </div>
+              <input type="submit">
+            </form>
+            
+              <!-- <button>save</button> -->
+
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+              <h1 class="h2">Balances</h1>              
+            </div>
+                       
+            <div class="table-responsive">
+
+              <p>address {{address}}</p>
+              <table class="table">
+                <tr>
+                  <th>currency</th>
+                  <th>balance</th>
+                </tr>
+            <tr>
+              <td>eth_balance</td>
+              <td>{{ eth_balance }}</td>
+            </tr>
+            <tr>
+              <td>token_balance</td>
+                <td>{{ token_balance }}</td>                
+            </tr>
+            
+            </table>
+                
+              
+            </div>
+          </main>
+
+{% endblock %}

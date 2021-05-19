@@ -1,0 +1,40 @@
+{% extends "frame.html" %}
+
+{% block innercontent %}
+
+          <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+              <h1>Pool info</h1>              
+            </div>
+
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+              <h1 class="h2">Links</h1>              
+            </div>
+            DEXtools <a href="https://www.dextools.io/app/uniswap/pair-explorer/{{target_pair}}">                      
+              <img width=40 height=40 src="{{url_for('static', filename='DexTools.jpg')}}" />
+            </a>
+          <br>
+            Uniswap info <a href="https://uniswap.info/pair/{{target_pair}}">                      
+              <img width=40 height=40 src="{{url_for('static', filename='uniswap.png')}}" />
+          </a>
+
+            
+                       
+            <div class="table-responsive">
+
+              <p>Target_token {{pool_info.token_symbol}} 
+                <br>
+                Address: {{pool_info.target_token}}
+                
+              </p>              
+
+            <hr>
+            <h2>Pool info</h2>          
+            <p>Price {{pool_info.price}}<br>
+              Reserves ETH {{pool_info.reserves_eth}}<br>
+             Reserves token {{pool_info.reserves_token}}<br>             
+            </p>
+
+          </main>
+
+{% endblock %}

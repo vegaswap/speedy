@@ -1,0 +1,15 @@
+[Unit]
+Description=Web Service
+After=multi-user.target
+Conflicts=getty@tty1.service
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu/speedy
+ExecStart=/usr/bin/python3 /home/ubuntu/speedy/web.py
+StandardInput=tty-force
+StandardOutput=file:/home/ubuntu/web.log
+
+[Install]
+WantedBy=multi-user.target

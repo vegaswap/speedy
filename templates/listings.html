@@ -1,0 +1,66 @@
+{% extends "frame.html" %}
+
+{% block innercontent %}
+
+          <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+              <h1 class="h2">New listings</h1>              
+            </div>
+                       
+            <div class="table-responsive">
+
+                <h1>stats</h1>
+                <p>total markets: {{num_markets}}</p>
+                <table class="table">
+                    <tr>
+                      <th>market number</th>
+                      <!-- <th>pair address</th> -->
+                      <th>DEXtools Link</th>
+                      <th>uniswap</th>
+                      <th>Etherscan Link</th>
+                      <!-- <th>token0</th>
+                      <th>token1</th> -->
+                      <th>price</th>
+                      <th>reserves token</th>
+                      <th>reserves ETH</th>
+                      <th>time created</th>
+                    </tr>
+                {% for row in rows %}
+                <tr>
+                  <td>{{ row.counter }}</td>
+                    <!-- <td>{{ row.address[:] }}</td> -->
+                    <td>
+                      <a href="https://www.dextools.io/app/uniswap/pair-explorer/{{row.address}}">                      
+                      <img width=20 height=20 src="{{url_for('static', filename='DexTools.jpg')}}" />
+                    </a>
+                  </td>
+                  <td>
+                    <a href="https://uniswap.info/pair/{{row.address}}">                      
+                      <img width=20 height=20 src="{{url_for('static', filename='uniswap.png')}}" />
+                  </a>
+                    </td>
+                    <td>
+                      <a href="https://etherscan.io/address/{{row.address}}#code">                      
+                        <img width=20 height=20 src="{{url_for('static', filename='etherscan.png')}}" />
+                    </a>
+                      </td>
+
+
+                      
+
+                    <!-- <td>{{ row.token0[:5] }}...</td>
+                    <td>{{ row.token1[:5] }}...</td> -->
+                    <td>{{ row.price }}</td>
+                    <td>{{ row.reserve0 }}</td>
+                    <td>{{ row.reserve1 }}</td>
+                    <td>{{ row.time_created }}</td>
+                    
+
+                </tr>
+                {% endfor %}
+                </table>
+              
+            </div>
+          </main>
+
+{% endblock %}
